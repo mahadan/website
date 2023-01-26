@@ -4,5 +4,5 @@ const AdminLayout = dynamic(() => import("components/admin/AdminLayout"));
 const AdminWrapper = dynamic(() => import("components/admin/AdminWrapper"));
 
 export default function AdminPage() {
-  return <Box sx={{ flexGrow: 1, height: "20vh" }}></Box>;
+  return <Box sx={{ flexGrow: 1 }}>helllo</Box>;
 }

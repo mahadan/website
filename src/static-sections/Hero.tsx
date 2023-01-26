@@ -1,40 +1,29 @@
-import { Box, Typography } from "@mui/material";
-//@ts-ignore
-import Typewriter from "typewriter-effect";
+import { Box, Button } from "@mui/material";
+import Logo from "components/ui/Logo";
 
-const TEXTS = ["Rotary in Action", "Rotaract"];
+const TEXTS = ["Together Let us", "donate blood", "and save lives."];
 
 function Hero() {
   return (
     <Box
       sx={{
         display: "flex",
-        height: (t) => t.spacing(60),
-        bgcolor: "gray",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        textAlign: "center",
-        background: "url(/bg3.jpg)",
-        backgroundPosition: "center center",
-        backgroundSize: "cover",
+        pt: 10,
+        pb: 15,
+        flexGrow: 1,
+        gap: 4,
       }}
     >
-      <Typography
-        variant="h1"
-        fontWeight={900}
-        sx={{
-          textShadow: "5px 5px white",
-          color: "#D51067",
-        }}
-      >
-        <Typewriter
-          options={{
-            strings: ["Rotaract", "Rotary in Action"],
-            autoStart: true,
-            loop: true,
-          }}
-        />
-      </Typography>
+      <Logo name="full_landscape" wrapperSx={{ display: ["none", "block", "block"], width: ["75%", "50%", "45%"] }} />
+      <Logo name="full_portrait" wrapperSx={{ display: ["block", "none"], width: "85%" }} />
+      <div>
+        <Button size="large" variant="contained" color="secondary">
+          Become A Volunteer!
+        </Button>
+      </div>
     </Box>
   );
 }

@@ -31,7 +31,7 @@ const theme = responsiveFontSizes(
         main: "#556cd6",
       },
       secondary: {
-        main: "#19857b",
+        main: "rgba(255,0,0,1)",
       },
       error: {
         main: red.A400,

@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 
-function ProgramsIntro() {
+function OurVision() {
   return (
     <Grid container sx={{ position: "relative" }}>
       <Box
@@ -93,4 +93,4 @@ function ProgramsIntro() {
   );
 }
 
-export default ProgramsIntro;
+export default OurVision;

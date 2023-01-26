@@ -11,13 +11,13 @@ import { FirebaseAppProvider } from "reactfire";
 import WrapAdminLayout from "components/admin/WrapAdminLayout";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAzuPugGVccrmJ8NEmX9EABljVbodL2h-8",
-  authDomain: "rotaract-india.firebaseapp.com",
-  projectId: "rotaract-india",
-  storageBucket: "rotaract-india.appspot.com",
-  messagingSenderId: "731050450531",
-  appId: "1:731050450531:web:3e57082ae1917d909aa256",
-  measurementId: "G-09RHCR27T5",
+  apiKey: "AIzaSyDsZweylBecf9vCemNvbMG0pJoewhSnASY",
+  authDomain: "mahadan-cdecc.firebaseapp.com",
+  projectId: "mahadan-cdecc",
+  storageBucket: "mahadan-cdecc.appspot.com",
+  messagingSenderId: "450907249607",
+  appId: "1:450907249607:web:d609f201eff1c4cf4497e2",
+  measurementId: "G-6156NDGHT5",
 };
 
 // Client-side cache, shared for the whole session of the user in the browser.

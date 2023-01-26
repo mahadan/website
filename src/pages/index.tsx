@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import StatsBreif from "static-sections/StatsBreif";
 import QuickLinks from "static-sections/QuickLinks";
-import ProgramsIntro from "static-sections/ProgramsIntro";
 import Hero from "static-sections/Hero";
 
 export default function Home() {
@@ -16,7 +15,7 @@ export default function Home() {
       >
         <StatsBreif />
         <QuickLinks />
-        <ProgramsIntro />
+        {/* <ProgramsIntro /> */}
       </Box>
     </>
   );

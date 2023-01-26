@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, Suspense } from "react";
 import Logo from "components/ui/Logo";
-import { AppBar, Toolbar, Button, NoSsr, Theme, CircularProgress } from "@mui/material";
+import { AppBar, Toolbar, NoSsr, Theme, CircularProgress, Box } from "@mui/material";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useIsAdminPath } from "components/admin/utils";
@@ -26,23 +26,25 @@ const AppHeader: React.FC<PropsWithChildren<{}>> = ({ children }) => {
         py: 2,
       }}
     >
-      <Toolbar sx={{ display: "flex" }}>
+      <Toolbar sx={{ display: "flex", justifyContent: ["center", "center", "normal"] }}>
         <Link href="/">
-          <Logo name="official" wrapperSx={{ height: (t: Theme) => t.spacing(8) }} />
+          <Logo name="landscape" wrapperSx={{ height: (t: Theme) => t.spacing(8) }} />
         </Link>
-        <div style={{ flexGrow: 1 }}></div>
-        {isAdminPath ? null : (
-          <>
-            <Button LinkComponent={Link} href="/what-we-do">
-              What We Do
-            </Button>
-          </>
-        )}
-        <NoSsr>
-          <Suspense fallback={<CircularProgress />}>
-            <LoginButton />
-          </Suspense>
-        </NoSsr>
+        <Box display={["none", "none", "flex"]} flexGrow={1} gap={1}>
+          <div style={{ flexGrow: 1 }}></div>
+          {isAdminPath ? null : (
+            <>
+              {/* <Button LinkComponent={Link} href="/what-we-do">
+                What We Do
+              </Button> */}
+            </>
+          )}
+          <NoSsr>
+            <Suspense fallback={<CircularProgress />}>
+              <LoginButton />
+            </Suspense>
+          </NoSsr>
+        </Box>
       </Toolbar>
     </AppBar>
   );

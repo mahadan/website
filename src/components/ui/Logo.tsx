@@ -1,6 +1,9 @@
 import CustomImage, { CustomImageProps } from "components/ui/CustomImage";
-import OfficialLogo from "../../../public/official-840x340.png";
-export type LogoNames = "official";
+import OfficialLogo from "../../../public/logo_circle.png";
+import Landscape from "../../../public/logo_landscape.png";
+import FullLand from "../../../public/full_landscape.png";
+import FullPortrait from "../../../public/full_portrait.png";
+export type LogoNames = "circle" | "landscape" | "full_landscape" | "full_portrait";
 
 export type LogoDetails = Record<
   LogoNames,
@@ -12,9 +15,24 @@ export type LogoDetails = Record<
 >;
 
 export const Logos: LogoDetails = {
-  official: {
-    aspectRatio: "840 / 340",
+  circle: {
+    aspectRatio: "1 / 1",
     src: OfficialLogo,
+    alt: "Rotaract India",
+  },
+  landscape: {
+    aspectRatio: "1617 / 396",
+    src: Landscape,
+    alt: "Rotaract India",
+  },
+  full_landscape: {
+    aspectRatio: "1094 / 366",
+    src: FullLand,
+    alt: "Rotaract India",
+  },
+  full_portrait: {
+    aspectRatio: "1617 / 1701",
+    src: FullPortrait,
     alt: "Rotaract India",
   },
 };

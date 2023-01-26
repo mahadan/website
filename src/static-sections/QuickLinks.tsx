@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Typography, Theme } from "@mui/material";
+import { Button, Container, Typography, Theme } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Link from "next/link";
 
@@ -14,8 +14,9 @@ type QuickLinkProps = {
 const QuickLink: React.FC<QuickLinkProps> = ({ title, description, linkText, linkHref, bgcolor }) => {
   return (
     <Grid
+      borderRadius={10}
       xs={12}
-      md={4}
+      md={12}
       sx={{
         p: [6, 12],
         display: "flex",
@@ -51,37 +52,32 @@ const QuickLink: React.FC<QuickLinkProps> = ({ title, description, linkText, lin
 
 const Links: QuickLinkProps[] = [
   {
-    title: "About the MDIO",
+    title: "About Mahadan 8.0",
     description:
-      "Asia Pacific Rotaract MDIO was formed on June 16, 2020 and was officially recognized by Rotary International on September 17, 2020 as a regional Rotaract multi-district information organization (MDIO) for Asia Pacific.",
+      "Rotaractors and Rotarians, since 7 years has been organizing a mega blood donation and awareness drive internationally during the World Rotaract Week (13th to 19th March) in March known as 'Mahadan'. ",
     linkHref: "#",
     linkText: "Learn More",
     bgcolor: "#00246c",
   },
   {
-    title: "Our Officers",
-    description: "Asia Pacific Rotaract MDIO is led by a pool of experienced Rotaract leaders in the region.",
-    linkHref: "#",
-    linkText: "Meet Our Leaders",
-    bgcolor: "#005daa",
-  },
-  {
-    title: "Our Member Districts",
+    title: "Our Volunteers",
     description:
-      "Member districts help drive our programs and services to Rotaractors. They also serve as our inspiration in continuously looking for better ways to be of value in the region.",
+      "RID 3120 with Rtr. Sachin Upadhyay (DRR 22-23) & Rtr. Kushagara Bansal (PDRR), leads the mahadan team this year as we move towards a better, healthy and aware society.",
     linkHref: "#",
-    linkText: "Know Our Member Districts",
-    bgcolor: "#872175",
+    linkText: "Meet Our Volunteers",
+    bgcolor: "#005daa",
   },
 ];
 
 function QuickLinks() {
   return (
-    <Grid container>
-      {Links.map((l) => (
-        <QuickLink key={l.title} {...l} />
-      ))}
-    </Grid>
+    <Container sx={{ py: 8 }}>
+      <Grid container gap={8}>
+        {Links.map((l) => (
+          <QuickLink key={l.title} {...l} />
+        ))}
+      </Grid>
+    </Container>
   );
 }
 

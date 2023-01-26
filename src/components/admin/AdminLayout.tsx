@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
-import GlobalStyles from "@mui/material/GlobalStyles/GlobalStyles";
 import { Suspense } from "react";
 import AdminAsideContent from "./AdminAsideContent";
+// import dynamic from "next/dynamic";
+// const GlobalStyles = dynamic(() => import("@mui/material/GlobalStyles/GlobalStyles"));
 const AdminAside: React.FC<{}> = () => {
   return (
     <Box
@@ -60,13 +61,13 @@ const AdminContent: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
 const AdminLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   return (
     <>
-      <GlobalStyles
+      {/* <GlobalStyles
         styles={{
           "#static-layout": {
             maxHeight: "100vh !important",
           },
         }}
-      />
+      /> */}
       <Box
         sx={{
           overflow: "hidden",

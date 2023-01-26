@@ -7,11 +7,20 @@ const Stat: React.FC<{
   title: string;
 }> = ({ title, value }) => {
   return (
-    <Grid xs={6} md={3} sx={{ textAlign: "center", display: "flex", gap: 1, flexDirection: "column" }}>
-      <Typography variant="h2" sx={{ fontWeight: 900 }}>
-        {value}
-      </Typography>
-      <Typography variant="h6">{title}</Typography>
+    <Grid xs={12} md={4}>
+      <Box
+        sx={{
+          textAlign: "center",
+          display: "flex",
+          gap: 1,
+          flexDirection: "column",
+        }}
+      >
+        <Typography variant="h2" sx={{ fontWeight: 900 }}>
+          {value}
+        </Typography>
+        <Typography variant="h6">{title}</Typography>
+      </Box>
     </Grid>
   );
 };
@@ -20,27 +29,38 @@ function StatsBreif() {
   return (
     <Box
       sx={{
-        bgcolor: "#D51067",
-        color: "#fff",
-        py: 6,
+        background: "url(/images.jpg)",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        py: [0, 8, 8],
+        p: [4, 0],
+        backgroundAttachment: "fixed",
+        backgroundPosition: "center",
       }}
     >
       <Container
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: 2,
+          alignItems: "center",
+          gap: 4,
+          textAlign: "center",
+          background: "rgba(255,0,0,0.6)",
+          color: "white",
+          textShadow: "1px white",
+          borderRadius: 5,
+          backdropFilter: "blur(5px)",
+          p: 5,
         }}
       >
-        <Grid container spacing={4}>
-          <Stat value="31k+" title="members" />
-          <Stat value="1402" title="clubs" />
-          <Stat value="19" title="districts" />
-          <Stat value="&infin;" title="possibilites" />
-        </Grid>
-        <Typography textAlign="center" fontStyle="italic">
-          Data as of 27-11-2022
+        <Typography variant="h4" maxWidth={"80%"}>
+          Since 7 years from inception, Mahadan Team makes effort to take a small step towards better tommorow
         </Typography>
+        <Grid container spacing={4} width={"100%"}>
+          <Stat value="1.6k+" title="camps organized" />
+          <Stat value="103k+" title="blood units collected" />
+          <Stat value="58" title="Rotary Districts involved" />
+        </Grid>
       </Container>
     </Box>
   );
