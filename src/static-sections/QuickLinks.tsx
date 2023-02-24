@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, Container, Typography, Theme, Box } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
+import { Button, Typography, Theme, Box, Grid } from "@mui/material";
 import Link from "next/link";
 
 type QuickLinkProps = {
@@ -13,7 +12,7 @@ type QuickLinkProps = {
 
 const QuickLink: React.FC<QuickLinkProps> = ({ title, description, linkText, linkHref, bgcolor }) => {
   return (
-    <Grid borderRadius={10} xs={12} md={6}>
+    <Grid item xs={12} md={6}>
       <Box
         sx={{
           p: [6, 12],
@@ -71,13 +70,11 @@ const Links: QuickLinkProps[] = [
 
 function QuickLinks() {
   return (
-    <Container sx={{ py: 8 }}>
-      <Grid container spacing={8}>
-        {Links.map((l) => (
-          <QuickLink key={l.title} {...l} />
-        ))}
-      </Grid>
-    </Container>
+    <Grid container rowSpacing={4} columnSpacing={{ xs: 0, md: 4 }} p={4} maxWidth="100vw">
+      {Links.map((l) => (
+        <QuickLink key={l.title} {...l} />
+      ))}
+    </Grid>
   );
 }
 

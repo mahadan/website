@@ -1,21 +1,80 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Avatar, Box, Stack, Typography } from "@mui/material";
 
 export default function AboutPage() {
   return (
     <>
       <Box
         sx={{
-          background: "url(/bg_cover.jpg)",
-          backgroundPosition: "top center",
+          background: "url(/bg_cover_about.png)",
+          backgroundPosition: "center center",
           backgroundSize: "cover",
           aspectRatio: "4/1",
           minHeight: "500px",
         }}
       ></Box>
       <Box
-        sx={{ mx: [4, 6, 8], mt: "-100px", background: "white", boxShadow: 6, borderRadius: 4, mb: 8, px: [4, 6, 8] }}
+        sx={{
+          mx: [4, 6, 8],
+          mt: "-50px",
+          background: "white",
+          boxShadow: 6,
+          borderRadius: 4,
+          mb: 8,
+          p: [4, 6, 8],
+          display: "flex",
+          gap: [1, 4],
+          flexDirection: ["column", "row"],
+          alignItems: ["center", "start"],
+        }}
       >
-        <Stack py={4} textAlign="justify">
+        <Box
+          sx={{
+            aspectRatio: "1/1",
+            width: ["180px", "250px"],
+            flexShrink: 0,
+          }}
+        >
+          <Avatar
+            sx={{ boxShadow: 5, width: "100%", height: "100%" }}
+            src={"/sahil_bhateja.png"}
+            alt={"Sahil Bhateja"}
+          />
+        </Box>
+        <Stack my={4}>
+          <Typography variant="h4" fontWeight={900}>
+            Late Sh. Sahil Bhateja
+          </Typography>
+          <Typography fontWeight={700} variant="h6">
+            Founder Chairman - Mahadan
+          </Typography>
+          <Typography fontWeight={700} variant="subtitle1">
+            PDRR 2013-14 & 2014-15, R.I.D. 3090
+          </Typography>
+          <Typography variant="body2" textAlign={"justify"}>
+            He was an ethusiastic leader, who had vision for International level blood collection, as Blood as a
+            resources is not easily available and he envisioned through Rotract that this problem has a solution amongst
+            millions of rotaractors worldwide who believe in Serivce With Fellowship. Through his club Rotaract Club of
+            Rajpura and District 3090, he kick-started the famous Mahadan event, eventually growing into yearly event
+            for Blood donation and Blood Donation awareness.
+          </Typography>
+          <Typography variant="h6">
+            Today, he might be with god almighty but his vision for Blood Donation Camps & Awareness has come into full
+            tide, affecting million of lives worldwide.
+          </Typography>
+        </Stack>
+      </Box>
+
+      <Box
+        sx={{
+          mx: [4, 6, 8],
+          background: "white",
+          boxShadow: 6,
+          borderRadius: 4,
+          mb: 8,
+          px: [4, 6, 8],
+        }}
+      >
+        <Stack py={4} textAlign="justify" gap={4}>
           <Typography variant="h3">About Mahadan</Typography>
           <Typography variant="h6">
             As you all must be aware that Rotaract from the past 7 years has been organizing a mega blood donation drive
