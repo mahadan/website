@@ -1,9 +1,6 @@
 import { Avatar, Box, Button, Card, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import { BaseUserWithID, useDeleteUser, useGetAllUsers } from "api/User";
-import dynamic from "next/dynamic";
-const AdminLayout = dynamic(() => import("components/admin/AdminLayout"));
-const AdminWrapper = dynamic(() => import("components/admin/AdminWrapper"));
 
 const SmallUserCard: React.FC<BaseUserWithID> = (user) => {
   const { mutate } = useDeleteUser();
@@ -27,9 +24,14 @@ const SmallUserCard: React.FC<BaseUserWithID> = (user) => {
       </Box>
       <Stack>
         <Typography variant="h6">{user.fullName}</Typography>
-        <Box>{user.rotaract?.clubName}</Box>
+        <Box>
+          {user.rotaract?.clubName} ({user.district})
+        </Box>
         <Box>{user.mobile}</Box>
         <Box>{user.email}</Box>
+        <Box>
+          {user.role} ({user.rolePriority})
+        </Box>
         <Box>
           <Button
             onClick={async () => {
@@ -51,7 +53,6 @@ const SmallUserCard: React.FC<BaseUserWithID> = (user) => {
 
 const DisplayData = () => {
   const { data, status } = useGetAllUsers();
-  console.log(data);
   if (status === "success" && data.length > 0) {
     return (
       <Box
@@ -62,7 +63,7 @@ const DisplayData = () => {
         }}
       >
         {(data as BaseUserWithID[])
-          .filter((val) => val.email !== "rotaractindia.dev@gmail.com")
+          .filter((val) => val.email !== "teammahadan@gmail.com")
           .map((user) => {
             return <SmallUserCard key={user.id} {...user} />;
           })}

@@ -11,7 +11,7 @@ const AdminWrapper: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   if (
     status === "success" &&
     signInCheckResult.signedIn === true &&
-    signInCheckResult.user.email === "rotaractindia.dev@gmail.com"
+    signInCheckResult.user.email === "teammahadan@gmail.com"
   ) {
     return <>{children}</>;
   } else {

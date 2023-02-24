@@ -70,7 +70,7 @@ const UserMenu: React.FC<{ email: string }> = ({ email }) => {
             <Avatar alt={user.fullName} src={user.photoUrl} /> {user.fullName}
           </MenuItem>
           <Divider />
-          {user.email === "rotaractindia.dev@gmail.com" && (
+          {user.email === "teammahadan@gmail.com" && (
             <Link href="/admin" legacyBehavior>
               <MenuItem>
                 <ListItemIcon>

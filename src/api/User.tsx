@@ -1,8 +1,26 @@
 import { User } from "firebase/auth";
-import { addDoc, deleteDoc, doc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
+import { addDoc, deleteDoc, getDocs, orderBy, query, setDoc, updateDoc, where } from "firebase/firestore";
+import { getDownloadURL, uploadBytes } from "firebase/storage";
+
+import { doc } from "firebase/firestore";
 import { useFirestoreCollectionData } from "reactfire";
 import { z } from "zod";
 import { useUserRef } from "./dbrefs";
+import { ref } from "firebase/storage";
+import { useStorage } from "reactfire";
+
+export const useStorageAPI = () => {
+  const storage = useStorage();
+
+  const createStorageRef = (_ref: string) => ref(storage, _ref);
+
+  return { createStorageRef, storage };
+};
+export function validateUrl(value: string) {
+  return /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(
+    value
+  );
+}
 
 export const BaseUserSchema = z
   .object({
@@ -42,18 +60,35 @@ export const BaseUserSchema = z
       })
       .optional(),
 
-    district: z.string().refine(
-      (data) => {
-        if (data !== undefined) {
-          return !isNaN(parseInt(data));
-        } else {
-          return false;
-        }
-      },
-      { message: "Please enter valid district number" }
-    ),
+    district: z
+      .string()
+      .refine(
+        (data) => {
+          if (data !== undefined) {
+            return !isNaN(parseInt(data));
+          } else {
+            return false;
+          }
+        },
+        { message: "Please enter valid district number" }
+      )
+      .transform((d) => Number(d)),
 
-    roles: z.array(z.any()).optional(),
+    role: z.string().min(4).optional(),
+    rolePriority: z
+      .string()
+      .refine(
+        (data) => {
+          if (data !== undefined) {
+            return !isNaN(parseInt(data));
+          } else {
+            return false;
+          }
+        },
+        { message: "Please enter valid number" }
+      )
+      .transform((d) => Number(d))
+      .optional(),
   })
   .partial();
 
@@ -85,11 +120,22 @@ export const useGetUserByEmail = (email: string) => {
 };
 
 export const useGetAllUsers = () => {
-  const { baseRef } = useUserRef();
+  const { baseRef, getRefById } = useUserRef();
+  const q = query(baseRef, orderBy("rolePriority", "asc"));
 
-  return useFirestoreCollectionData(baseRef, {
+  const t = useFirestoreCollectionData(q, {
     suspense: true,
   });
+
+  // (t.data as BaseUserWithID[]).map((i) => {
+  //   const ref = getRefById(i.id);
+  //   updateDoc(ref, {
+  //     district: Number(i.district),
+  //     rolePriority: Number(i.rolePriority),
+  //   });
+  // });
+
+  return t;
 };
 
 export const useCreateUserAtFirstLogin = () => {
@@ -124,10 +170,13 @@ export const useCreateUserAtFirstLogin = () => {
 
 export const useCreateManualUser = () => {
   const { ref, baseRef, getRefById } = useUserRef();
+  const { createStorageRef, storage } = useStorageAPI();
 
   const mutate = async (user: BaseUser) => {
     const q = query(baseRef, where("email", "==", user.email));
     const existingUser = await getDocs(q);
+    let newPhotoUrl = "";
+    const { photoUrl } = user;
 
     if (existingUser.docs.length === 0) {
       const createdUser = await addDoc(ref, {
@@ -136,10 +185,27 @@ export const useCreateManualUser = () => {
         createdAt: new Date(),
         emailVerified: false,
         profileStatus: "NEW-USER",
+        photoUrl: "",
       });
-      await updateDoc(getRefById(createdUser.id), {
-        id: createdUser.id,
-      });
+
+      if (photoUrl) {
+        console.log(photoUrl);
+        const storageRef = createStorageRef(`profile-photo/${createdUser.id}`);
+
+        const { ref } = await uploadBytes(storageRef, photoUrl.blob, {
+          contentType: "image/png",
+        });
+        newPhotoUrl = await getDownloadURL(ref);
+
+        await updateDoc(getRefById(createdUser.id), {
+          id: createdUser.id,
+          photoUrl: newPhotoUrl,
+        });
+      } else {
+        await updateDoc(getRefById(createdUser.id), {
+          id: createdUser.id,
+        });
+      }
     } else {
       throw new Error("Email already assigned with other user");
     }
