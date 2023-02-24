@@ -6,16 +6,15 @@ export default function AboutPage() {
       <Box
         sx={{
           background: "url(/bg_cover_about.png)",
-          backgroundPosition: "center center",
+          backgroundPosition: ["center left", "center center"],
           backgroundSize: "cover",
-          aspectRatio: "4/1",
-          minHeight: "500px",
+          height: ["250px", "350px", "500px"],
         }}
       ></Box>
       <Box
         sx={{
           mx: [4, 6, 8],
-          mt: "-50px",
+          mt: ["-25px", "-50px"],
           background: "white",
           boxShadow: 6,
           borderRadius: 4,
