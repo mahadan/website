@@ -42,7 +42,7 @@ export default function AboutPage() {
         </Box>
         <Stack my={4}>
           <Typography variant="h4" fontWeight={900}>
-            Late Sh. Sahil Bhateja
+            Late Rtr. Sahil Bhateja
           </Typography>
           <Typography fontWeight={700} variant="h6">
             Founder Chairman - Mahadan
