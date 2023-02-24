@@ -24,6 +24,8 @@ export default function AboutPage() {
           gap: [1, 4],
           flexDirection: ["column", "row"],
           alignItems: ["center", "start"],
+          justifyItems: ["center", "flex-start"],
+          textAlign: ["center", "left"],
         }}
       >
         <Box
@@ -49,6 +51,7 @@ export default function AboutPage() {
           <Typography fontWeight={700} variant="subtitle1">
             PDRR 2013-14 & 2014-15, R.I.D. 3090
           </Typography>
+          <br />
           <Typography variant="body2" textAlign={"justify"}>
             He was an ethusiastic leader, who had vision for International level blood collection, as Blood as a
             resources is not easily available and he envisioned through Rotract that this problem has a solution amongst
@@ -56,6 +59,7 @@ export default function AboutPage() {
             Rajpura and District 3090, he kick-started the famous Mahadan event, eventually growing into yearly event
             for Blood donation and Blood Donation awareness.
           </Typography>
+          <br />
           <Typography variant="h6">
             Today, he might be with god almighty but his vision for Blood Donation Camps & Awareness has come into full
             tide, affecting million of lives worldwide.
