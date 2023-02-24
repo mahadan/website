@@ -5,9 +5,11 @@ export default function AboutPage() {
     <>
       <Box
         sx={{
-          bgcolor: "blue",
+          background: "url(/bg_cover.jpg)",
+          backgroundPosition: "top center",
+          backgroundSize: "cover",
           aspectRatio: "4/1",
-          minHeight: "400px",
+          minHeight: "500px",
         }}
       ></Box>
       <Box
