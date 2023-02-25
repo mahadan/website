@@ -49,6 +49,9 @@ export default function AboutPage() {
             Founder Chairman - Mahadan
           </Typography>
           <Typography fontWeight={700} variant="subtitle1">
+            Past President 2017-18 - SEARIC MDIO,
+          </Typography>
+          <Typography fontWeight={700} variant="subtitle1">
             PDRR 2013-14 & 2014-15, R.I.D. 3090
           </Typography>
           <br />
