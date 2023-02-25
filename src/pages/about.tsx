@@ -80,7 +80,7 @@ export default function AboutPage() {
         <Stack py={4} textAlign="justify" gap={4}>
           <Typography variant="h3">About Mahadan</Typography>
           <Typography variant="h6">
-            &aposMahadan&apos; is an initiative of Rotaract (the youth wing of Rotary International) going on from the
+            &apos;Mahadan&apos; is an initiative of Rotaract (the youth wing of Rotary International) going on from the
             past 7 years where Rotary and Rotaract Clubs have been organizing a mega blood donation drive
             internationally during the World Rotaract Week. Started in the year 2016 by some young Rotarctors lead by
             PDRR Sahil Bhateja of RID 3090 the event has been able to collect more than 1 Lakh Blood Units globally by
