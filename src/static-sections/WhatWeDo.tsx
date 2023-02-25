@@ -1,5 +1,4 @@
 import { Typography, Container } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 
@@ -71,34 +70,28 @@ const images = [
 
 export default function WhatWeDo() {
   return (
-    <Container sx={{ mb: 16, mt: 8 }}>
-      <Grid container spacing={8}>
-        <Grid xs={12}>
-          <Typography
-            sx={{
-              position: "relative",
-              textTransform: "uppercase",
-              "&:after": {
-                position: "absolute",
-                content: "''",
-                bottom: "-12px",
-                left: "4px",
-                width: "25%",
-                maxWidth: "100px",
-                height: "2px",
-                background: "black",
-                display: "block",
-              },
-            }}
-            variant="h3"
-          >
-            our activities at a glance
-          </Typography>
-        </Grid>
-        <Grid xs={12} lg={6} mx={"auto"}>
-          <ImageGallery items={images} />
-        </Grid>
-      </Grid>
+    <Container sx={{ mb: 12, mt: 4, display: "flex", flexDirection: "column", gap: 4 }}>
+      <Typography
+        sx={{
+          position: "relative",
+          textTransform: "uppercase",
+          "&:after": {
+            position: "absolute",
+            content: "''",
+            bottom: "-12px",
+            left: "4px",
+            width: "25%",
+            maxWidth: "100px",
+            height: "2px",
+            background: "black",
+            display: "block",
+          },
+        }}
+        variant="h3"
+      >
+        our activities at a glance
+      </Typography>
+      <ImageGallery items={images} />
     </Container>
   );
 }
