@@ -53,7 +53,7 @@ function StatsBreif() {
           p: 5,
         }}
       >
-        <Typography variant="h4" maxWidth={"80%"}>
+        <Typography variant="h5">
           Since 7 years from inception, Mahadan Team makes effort to take a small step towards better tommorow
         </Typography>
         <Grid container spacing={4} width={"100%"}>

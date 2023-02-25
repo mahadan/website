@@ -48,6 +48,44 @@ const QuickLink: React.FC<QuickLinkProps> = ({ title, description, linkText, lin
     </Grid>
   );
 };
+const QuickLink2: React.FC<QuickLinkProps> = ({ title, description, linkText, linkHref, bgcolor }) => {
+  return (
+    <Grid item xs={12}>
+      <Box
+        sx={{
+          p: [6, 12],
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          bgcolor: bgcolor,
+          color: (t: Theme) => t.palette.getContrastText(bgcolor),
+          height: "100%",
+        }}
+      >
+        <Typography variant="h5" fontWeight={900}>
+          {title}
+        </Typography>
+        <Typography variant="subtitle1">{description}</Typography>
+        <div>
+          <Button
+            variant="outlined"
+            LinkComponent={Link}
+            href={linkHref}
+            sx={{
+              color: (t: Theme) => t.palette.getContrastText(bgcolor),
+              borderColor: (t: Theme) => t.palette.getContrastText(bgcolor),
+              "&:hover": {
+                borderColor: (t: Theme) => t.palette.getContrastText(bgcolor),
+              },
+            }}
+          >
+            {linkText}
+          </Button>
+        </div>
+      </Box>
+    </Grid>
+  );
+};
 
 const Links: QuickLinkProps[] = [
   {
@@ -74,6 +112,13 @@ function QuickLinks() {
       {Links.map((l) => (
         <QuickLink key={l.title} {...l} />
       ))}
+      <QuickLink2
+        title="Important Documents"
+        description="List of important documets and content for Clubs organizing blood donation camps under Mahadan 8.0"
+        linkHref="/documents"
+        linkText="Know More"
+        bgcolor="#8a0096"
+      />
     </Grid>
   );
 }

@@ -46,7 +46,7 @@ const DisplayData = () => {
           display: "grid",
           gridTemplateColumns: ["1fr", "1fr, 1fr", "1fr 1fr 1fr"],
           gap: 4,
-          my: 4,
+          m: 4,
         }}
       >
         {(data as BaseUserWithID[])

@@ -33,6 +33,7 @@ export default function MyApp(props: MyAppProps) {
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <title>Mahadan 8.0 - International Blood Donation Event</title>
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
