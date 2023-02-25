@@ -1,12 +1,77 @@
-import React, { PropsWithChildren, Suspense } from "react";
+import React, { PropsWithChildren, useState } from "react";
 import Logo from "components/ui/Logo";
-import { AppBar, Toolbar, NoSsr, Theme, CircularProgress, Box } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Theme,
+  Box,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItemButton,
+  ListItemText,
+  ListItem,
+  useMediaQuery,
+} from "@mui/material";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useIsAdminPath } from "components/admin/utils";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+import { Close, Menu } from "@mui/icons-material";
 
 const LoginButton = dynamic(() => import("components/auth/LoginButton"));
+
+const MobileDrawer = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <IconButton edge="start" onClick={() => setOpen(true)}>
+        <Menu />
+      </IconButton>
+      <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+        <Box
+          sx={{ width: "80vw", maxWidth: "280px" }}
+          role="presentation"
+          onClick={() => setOpen(false)}
+          onKeyDown={() => setOpen(false)}
+        >
+          <AppBar position="static" color="transparent" sx={{ boxShadow: 0 }}>
+            <Toolbar sx={{ display: "flex" }}>
+              <div style={{ flexGrow: 1 }}></div>
+              <IconButton edge="end" onClick={() => setOpen(false)}>
+                <Close />
+              </IconButton>
+            </Toolbar>
+          </AppBar>
+          <List>
+            <Link href="/about" legacyBehavior>
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemText primary={"About us"} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+            <Link href="/team" legacyBehavior>
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemText primary={"Team"} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+            <Link href="/documents" legacyBehavior>
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemText primary={"Documents"} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+          </List>
+        </Box>
+      </Drawer>
+    </>
+  );
+};
 
 const AppHeader: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const isAdminPath = useIsAdminPath();
@@ -14,6 +79,7 @@ const AppHeader: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     disableHysteresis: true,
     threshold: 0,
   });
+  const isMobile = useMediaQuery((t: Theme) => t.breakpoints.down("md"));
   return (
     <AppBar
       position="sticky"
@@ -26,7 +92,8 @@ const AppHeader: React.FC<PropsWithChildren<{}>> = ({ children }) => {
         py: 2,
       }}
     >
-      <Toolbar sx={{ display: "flex", justifyContent: ["center", "center", "normal"] }}>
+      <Toolbar sx={{ display: "flex", gap: 2 }}>
+        {isMobile ? <MobileDrawer /> : null}
         <Link href="/">
           <Logo name="landscape" wrapperSx={{ height: (t: Theme) => t.spacing(8) }} />
         </Link>
@@ -34,16 +101,22 @@ const AppHeader: React.FC<PropsWithChildren<{}>> = ({ children }) => {
           <div style={{ flexGrow: 1 }}></div>
           {isAdminPath ? null : (
             <>
-              {/* <Button LinkComponent={Link} href="/what-we-do">
-                What We Do
-              </Button> */}
+              <Button variant="contained" color="secondary" LinkComponent={Link} href="/about">
+                About us
+              </Button>
+              <Button variant="contained" color="secondary" LinkComponent={Link} href="/team">
+                Team
+              </Button>
+              <Button variant="contained" color="secondary" LinkComponent={Link} href="/documents">
+                Documents
+              </Button>
             </>
           )}
-          <NoSsr>
+          {/* <NoSsr>
             <Suspense fallback={<CircularProgress />}>
               <LoginButton />
             </Suspense>
-          </NoSsr>
+          </NoSsr> */}
         </Box>
       </Toolbar>
     </AppBar>
