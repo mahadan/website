@@ -3,8 +3,6 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 
 const images = [
-  { original: "/camps/1.jpg", thumbnail: "/camps/1.jpg" },
-  { original: "/camps/2.jpg", thumbnail: "/camps/2.jpg" },
   { original: "/camps/3.jpg", thumbnail: "/camps/3.jpg" },
   { original: "/camps/4.jpg", thumbnail: "/camps/4.jpg" },
   { original: "/camps/5.jpg", thumbnail: "/camps/5.jpg" },
@@ -20,7 +18,6 @@ const images = [
   { original: "/camps/15.jpg", thumbnail: "/camps/15.jpg" },
   { original: "/camps/16.jpg", thumbnail: "/camps/16.jpg" },
   { original: "/camps/17.jpg", thumbnail: "/camps/17.jpg" },
-
   { original: "/camps/18.jpg", thumbnail: "/camps/18.jpg" },
   { original: "/camps/19.jpg", thumbnail: "/camps/19.jpg" },
   { original: "/camps/20.jpg", thumbnail: "/camps/20.jpg" },
@@ -75,6 +72,7 @@ export default function WhatWeDo() {
         sx={{
           position: "relative",
           textTransform: "uppercase",
+          mx: "auto",
           "&:after": {
             position: "absolute",
             content: "''",
@@ -91,6 +89,7 @@ export default function WhatWeDo() {
       >
         our activities at a glance
       </Typography>
+
       <ImageGallery items={images} />
     </Container>
   );

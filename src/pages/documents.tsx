@@ -24,6 +24,8 @@ const docs: Document[] = [
   { name: "Objectives Mahadan 8.0", url: "/downloads/Objectives Mahadan 8.0.pdf" },
   { name: "Overview Mahadan 8.0", url: "/downloads/Overview Mahadan 8.0.pdf" },
   { name: "Sample Banner Design Mahadan 8.0", url: "/downloads/Sample Banner Design Mahadan 8.0.pdf" },
+  { name: "I Support Mahadan 8.0 frame", url: "/downloads/I Support Mahadan 8.0 frame.png" },
+  { name: "Invitation Letter Format - Mahadan 8.0", url: "/downloads/Invitation Letter Format - Mahadan 8.0.pdf" },
 ];
 
 export default function Team() {

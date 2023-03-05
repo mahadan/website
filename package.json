@@ -31,6 +31,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.5",
     "react-image-gallery": "^1.2.11",
+    "react-player": "^2.11.2",
     "react-text-transition": "^3.0.2",
     "react-typewriter-effect": "^1.1.0",
     "reactfire": "^4.2.2",
