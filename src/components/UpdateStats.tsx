@@ -6,7 +6,6 @@ export default function UpdateStatsForm() {
   const { mutate } = useUpdateStats();
   const { camps, districts, units } = data;
 
-  console.log(data);
   return (
     <Form
       name="update stats"
@@ -18,19 +17,19 @@ export default function UpdateStatsForm() {
           type: "text",
           name: "camps",
           label: "Number of Camps",
-          gridProps: { md: 4 },
+          gridProps: { xs: 12, md: 4 },
         },
         {
           type: "text",
           name: "units",
           label: "Number of Blood Units Collected",
-          gridProps: { md: 4 },
+          gridProps: { xs: 12, md: 4 },
         },
         {
           type: "text",
           name: "districts",
           label: "Number of Districts Involved",
-          gridProps: { md: 4 },
+          gridProps: { xs: 12, md: 4 },
         },
       ]}
       onSubmit={async (data) => {
