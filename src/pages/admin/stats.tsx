@@ -1,8 +1,7 @@
 import { Typography } from "@mui/material";
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 
-const UpdateStatsForm = dynamic(() => import("components/UpdateStats"));
+const UpdateStatsForm = lazy(() => import("components/UpdateStats"));
 
 export default function stats() {
   return (
