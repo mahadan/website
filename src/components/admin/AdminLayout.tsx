@@ -38,8 +38,10 @@ const AdminContent: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       sx={{
         position: "absolute",
         top: 0,
-        left: [0, 0, "min(25%,300px)"],
-        width: ["100%", "100%", "max(75%,calc(100% - 300px))"],
+        left: 0,
+        width: "100%",
+        // left: [0, 0, "min(25%,300px)"],
+        // width: ["100%", "100%", "max(75%,calc(100% - 300px))"],
         height: "100%",
         overflow: "auto",
         zIndex: 2,
@@ -77,7 +79,7 @@ const AdminLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
           height: "100%",
         }}
       >
-        <AdminAside />
+        {/* <AdminAside /> */}
         <AdminContent>
           <Suspense fallback={<div style={{ flexGrow: 1 }}>chota content loader</div>}>{children}</Suspense>
         </AdminContent>

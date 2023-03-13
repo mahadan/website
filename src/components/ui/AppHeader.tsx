@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, { PropsWithChildren, Suspense, useState } from "react";
 import Logo from "components/ui/Logo";
 import {
   AppBar,
@@ -13,6 +13,8 @@ import {
   ListItemText,
   ListItem,
   useMediaQuery,
+  NoSsr,
+  CircularProgress,
 } from "@mui/material";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -90,33 +92,37 @@ const AppHeader: React.FC<PropsWithChildren<{}>> = ({ children }) => {
         borderBottom: "1px solid",
         borderColor: "divider",
         py: 2,
+        maxWidth: "100vw",
       }}
     >
-      <Toolbar sx={{ display: "flex", gap: 2 }}>
+      <Toolbar sx={{ display: "flex", gap: 2, maxWidth: "100vw" }}>
         {isMobile ? <MobileDrawer /> : null}
         <Link href="/">
-          <Logo name="landscape" wrapperSx={{ height: (t: Theme) => t.spacing(8) }} />
+          <Logo name="landscape" wrapperSx={{ height: (t: Theme) => [t.spacing(6), t.spacing(7), t.spacing(8)] }} />
         </Link>
-        <Box display={["none", "none", "flex"]} flexGrow={1} gap={1}>
-          <div style={{ flexGrow: 1 }}></div>
-          {isAdminPath ? null : (
-            <>
-              <Button variant="contained" color="secondary" LinkComponent={Link} href="/about">
-                About us
-              </Button>
-              <Button variant="contained" color="secondary" LinkComponent={Link} href="/team">
-                Team
-              </Button>
-              <Button variant="contained" color="secondary" LinkComponent={Link} href="/documents">
-                Documents
-              </Button>
-            </>
-          )}
-          {/* <NoSsr>
+        <div style={{ flexGrow: 1 }}></div>
+
+        <Box display="flex" gap={1}>
+          <Box display={["none", "none", "flex"]} gap={1}>
+            {isAdminPath ? null : (
+              <>
+                <Button variant="contained" color="secondary" LinkComponent={Link} href="/about">
+                  About us
+                </Button>
+                <Button variant="contained" color="secondary" LinkComponent={Link} href="/team">
+                  Team
+                </Button>
+                <Button variant="contained" color="secondary" LinkComponent={Link} href="/documents">
+                  Documents
+                </Button>
+              </>
+            )}
+          </Box>
+          <NoSsr>
             <Suspense fallback={<CircularProgress />}>
               <LoginButton />
             </Suspense>
-          </NoSsr> */}
+          </NoSsr>
         </Box>
       </Toolbar>
     </AppBar>

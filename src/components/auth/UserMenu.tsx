@@ -22,6 +22,7 @@ const UserMenu: React.FC<{ email: string }> = ({ email }) => {
     return (
       <React.Fragment>
         <IconButton
+          edge="end"
           onClick={handleClick}
           size="small"
           sx={{ ml: 2 }}
@@ -70,13 +71,23 @@ const UserMenu: React.FC<{ email: string }> = ({ email }) => {
             <Avatar alt={user.fullName} src={user.photoUrl} /> {user.fullName}
           </MenuItem>
           <Divider />
-          {user.email === "teammahadan@gmail.com" && (
+          {/* {user.email === "teammahadan@gmail.com" && (
             <Link href="/admin" legacyBehavior>
               <MenuItem>
                 <ListItemIcon>
                   <Settings fontSize="small" />
                 </ListItemIcon>
                 Admin Portal
+              </MenuItem>
+            </Link>
+          )} */}
+          {user.email === "teammahadan@gmail.com" && (
+            <Link href="/admin/stats" legacyBehavior>
+              <MenuItem>
+                <ListItemIcon>
+                  <Settings fontSize="small" />
+                </ListItemIcon>
+                Stats
               </MenuItem>
             </Link>
           )}

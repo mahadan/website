@@ -3,7 +3,16 @@ import ReactPlayer from "react-player";
 
 export default function Youtube() {
   return (
-    <Container sx={{ mb: 12, mt: 4, display: "flex", flexDirection: "column", gap: 4, alignItems: "center" }}>
+    <Container
+      sx={{
+        mb: 12,
+        mt: 4,
+        display: "flex",
+        flexDirection: "column",
+        gap: 4,
+        alignItems: "center",
+      }}
+    >
       <Typography
         sx={{
           position: "relative",
@@ -27,6 +36,8 @@ export default function Youtube() {
       <NoSsr>
         <ReactPlayer
           url="https://www.youtube.com/watch?v=mzXMMOxkk1s&ab_channel=Rotaract3120"
+          controls={true}
+          width="80vw"
           config={{
             youtube: {
               playerVars: { showinfo: 1 },

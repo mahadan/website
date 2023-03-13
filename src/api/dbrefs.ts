@@ -24,3 +24,16 @@ export const useUserRef = () => {
     getRefById,
   };
 };
+
+export const useStatsRef = () => {
+  const firestore = useFirestore();
+
+  const baseRef = doc(firestore, "stats", "data");
+
+  const ref = doc(firestore, "stats", "data").withConverter(createConverter<BaseUserWithID>());
+
+  return {
+    ref,
+    baseRef,
+  };
+};
